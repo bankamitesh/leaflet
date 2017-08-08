@@ -39,7 +39,7 @@
 	</head>
 	<body>
 		<div id='map'></div>
-		<script type="text/javascript" src="web/assets/js/bangalore_zone_wise.js"></script>
+		<script type="text/javascript" src="web/assets/js/bangalore_pincode.js"></script>
 		<script type="text/javascript">
 			var map = L.map('map').setView([12.977527, 77.635864], 10);
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -49,19 +49,20 @@
 			}).addTo(map);
 			var geojson = L.geoJson(statesData).addTo(map);
 			function getColor(d) {
-    			return d == 'Zone 1' ? '#800026' :
-           			d == 'Zone 2'  ? '#BD0026' :
-           			d == 'Zone 3'  ? '#E31A1C' :
-           			d == 'Zone 4'  ? '#FC4E2A' :
-           			d == 'Zone 5'   ? '#FD8D3C' :
-           			d == 'Zone 6'   ? '#FEB24C' :
-					d == 'Zone 7'   ? '#FED976' :
-					d == 'Zone 8'   ? '#FFEDA0' :
-                     		'#FF9E7A';
+				return d > 30.5 ? '#f03b20' :
+					d > 30  ? '#d95f0e' :
+           			d >29.5  ? '#feb24c' :
+           			d > 29  ? '#fec44f' :
+           			d >28.5  ? '#31a354' :
+           			d >28   ? '#a1d99b' :
+           			d >27   ? '#e5f5e0' :
+					d >20   ? '#3182bd' :
+					d >18    ? '#9ecae1' :
+                     		'#deebf7';
 			}
 			function style(feature) {
     			return {
-        			fillColor: getColor(feature.properties.name),
+        			fillColor: getColor(feature.properties.Temparature),
         			weight: 2,
         			opacity: 1,
         			color: 'white',
@@ -108,17 +109,17 @@
     			return this._div;
 			};
 			info.update = function (props) {
-    			this._div.innerHTML = '<h4>Bangalore City</h4>' +  (props ? '<b>' + props.name : 'Hover over a state');
+    			this._div.innerHTML = '<h4>Bangalore City</h4>' +  (props ? '<b>' + props.name + ', ' + props.district + '<br> <b> Pincode - '+ props.pincode + '<br> <b> Temperature - '+ props.Temparature : 'Hover over a area');
 			};
 			info.addTo(map);
 			var legend = L.control({position: 'bottomright'});
 			legend.onAdd = function (map) {
 				var div = L.DomUtil.create('div', 'info legend'),
-        		grades = ["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5", "Zone 6", "Zone 7", "Zone 8"],
+        		grades = [18,20,27,28,28.5,29,29.5,30,30.5],
         		labels = [];
 				for (var i = 0; i < grades.length; i++) {
-        			div.innerHTML += '<i style="background:' + getColor(grades[i]) + '"></i> ' + grades[i] + '<br>';
-    			}
+                    div.innerHTML +='<i style="background:' + getColor(grades[i] + 0.1) + '"></i> ' +grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                }
 			return div;
 			};
 			legend.addTo(map);
