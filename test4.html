@@ -49,16 +49,16 @@
 			}).addTo(map);
 			var geojson = L.geoJson(statesData).addTo(map);
 			function getColor(d) {
-				return d > 30.5 ? '#f03b20' :
-					d > 30  ? '#d95f0e' :
-           			d >29.5  ? '#feb24c' :
-           			d > 29  ? '#fec44f' :
-           			d >28.5  ? '#31a354' :
-           			d >28   ? '#a1d99b' :
-           			d >27   ? '#e5f5e0' :
-					d >20   ? '#3182bd' :
-					d >18    ? '#9ecae1' :
-                     		'#deebf7';
+				return d > 30 ? '#0080f6' :
+					d > 28.5  ? '#148af6' :
+           			d >27  ? '#2793f6' :
+           			d >25.5  ? '#2793f6' :
+           			d >24  ? '#4ba2f2' :
+           			d >22.5   ? '#61aff6' :
+           			d >21   ? '#7ebffb' :
+					d >19.5   ? '#8fc5f6' :
+					d >18    ? '#a6cff4' :
+                     		'#cfe2f4';
 			}
 			function style(feature) {
     			return {
@@ -115,7 +115,7 @@
 			var legend = L.control({position: 'bottomright'});
 			legend.onAdd = function (map) {
 				var div = L.DomUtil.create('div', 'info legend'),
-        		grades = [18,20,27,28,28.5,29,29.5,30,30.5],
+        		grades = [0,18,19.5,21,22.5,24,25.5,27,28.5,30],
         		labels = [];
 				for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +='<i style="background:' + getColor(grades[i] + 0.1) + '"></i> ' +grades[i] + (grades[i + 1]  ? '&ndash;' + grades[i + 1]  + '<br>' : '+');
