@@ -51,16 +51,16 @@
 
 			var geojson = L.geoJson(statesData).addTo(map);
 			function getColor(d) {
-				return d > 30.0 ? '#C10803' :
-					   d > 28.5 ? '#F41818' :
-           			   d > 27.0 ? '#ED3535' :
-           			   d > 25.5 ? '#E94848' :
-           			   d > 24.0 ? '#EA5F5F' :
-           			   d > 22.5 ? '#ED7373' :
-           			   d > 21.0 ? '#F18A8A' :
-					   d > 19.5 ? '#F6A1A1' :
-					   d > 18.0 ? '#FABDBD' :
-                     			  '#FBD2D2' ;
+				return d > 30.0 ? '#0000FF' :
+					   d > 28.5 ? '#1515FF' :
+           			   d > 27.0 ? '#2A2AFF' :
+           			   d > 25.5 ? '#3F3FFF' :
+           			   d > 24.0 ? '#5454FF' :
+           			   d > 22.5 ? '#6969FF' :
+           			   d > 21.0 ? '#7E7EFF' :
+					   d > 19.5 ? '#9393FF' :
+					   d > 18.0 ? '#A8A8FF' :
+                     		      '#BDBDFF' ;
 			}
 
 			function style(feature) {

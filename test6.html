@@ -9,7 +9,7 @@
         <script src="web/assets/js/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
 		<style>
 			#map {
-    			width: 600px;
+    			width: 100%;
 				height: 600px;
 			}
 			.info {
@@ -51,16 +51,16 @@
 
 			var geojson = L.geoJson(statesData).addTo(map);
 			function getColor(d) {
-				return d > 30.0 ? '#C10803' :
-					   d > 28.5 ? '#F41818' :
-           			   d > 27.0 ? '#ED3535' :
-           			   d > 25.5 ? '#E94848' :
-           			   d > 24.0 ? '#EA5F5F' :
-           			   d > 22.5 ? '#ED7373' :
-           			   d > 21.0 ? '#F18A8A' :
-					   d > 19.5 ? '#F6A1A1' :
-					   d > 18.0 ? '#FABDBD' :
-                     			  '#FBD2D2' ;
+				return d > 30.0 ? '#FF0000' :
+					   d > 28.5 ? '#FF3E00' :
+           			   d > 27.0 ? '#FF5500' :
+           			   d > 25.5 ? '#FF8300' :
+           			   d > 24.0 ? '#FFD100' :
+           			   d > 22.5 ? '#E0FF00' :
+           			   d > 21.0 ? '#A6FF00' :
+					   d > 19.5 ? '#68FF00' :
+					   d > 18.0 ? '#08FF00' :
+                     		      '#00FF1F' ;
 			}
 
 			function style(feature) {
