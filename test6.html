@@ -59,8 +59,8 @@
            			   d > 22.5 ? '#E0FF00' :
            			   d > 21.0 ? '#A6FF00' :
 					   d > 19.5 ? '#68FF00' :
-					   d > 18.0 ? '#08FF00' :
-                     		      '#00FF1F' ;
+					   d > 18.0 ? '#33BB33' :
+                     		      '#119911' ;
 			}
 
 			function style(feature) {
@@ -78,7 +78,8 @@
 
 			L.geoJson(statesData, {style: style}).addTo(map);
 			function highlightFeature(e) {
-    			var layer = e.target;
+    			
+				var layer = e.target;
 				layer.setStyle({
         			weight: 1,
         			color: '#666',
@@ -88,7 +89,9 @@
 				if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         			layer.bringToFront();
 				}
+
 				info.update(layer.feature.properties);
+
 			};
 
 			function resetHighlight(e) {
@@ -101,11 +104,13 @@
 			};
 
 			function onEachFeature(feature, layer) {
-    			layer.on({
+    			
+				layer.on({
        				mouseover: highlightFeature,
         			mouseout: resetHighlight,
         			click: zoomToFeature
     			});
+				
 			};
 
 			geojson = L.geoJson(statesData, {
@@ -119,11 +124,13 @@
     			this.update();
     			return this._div;
 			};
+
 			info.update = function (props) {
     			this._div.innerHTML = '<h4>Bangalore City</h4>' +  (props ? '<b>' + props.name + '<br> <b> Temperature - '+ props.Temparature : 'Hover over a area');
 			};
 
 			info.addTo(map);
+			
 			var legend = L.control({position: 'bottomright'});
 			legend.onAdd = function (map) {
 				var div = L.DomUtil.create('div', 'info legend'),
@@ -134,7 +141,9 @@
                 }
 			return div;
 			};
+
 			legend.addTo(map);
+
 		</script>
 	</body>
 </html>
