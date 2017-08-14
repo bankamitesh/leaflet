@@ -75,7 +75,9 @@ Including the GeoJSON data a basic Choropleth Map of Bangalore will be created.
 
 ### Example ###
 
-* <html>
+* This sample code with create a basic Leaflet map.
+
+<html>
     <head>
         <title>Leaflet</title>
         <link rel="stylesheet" href="web/assets/css/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin=""/>
