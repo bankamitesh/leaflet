@@ -2,73 +2,73 @@
 
 ### What is this repository for? ###
 
-Choropleth Map Of Bangalore With Temperature Visualization 
-Leaflet 1.2.0
-[Learn Leaflet](http://leafletjs.com/examples.html)
+* Choropleth Map Of Bangalore With Temperature Visualization 
+* Leaflet 1.2.0
+* [Learn Leaflet](http://leafletjs.com/examples.html)
 
 ### How do I get set up? ###
 
-This step-by-step guide will quickly get you started on Leaflet basics, including setting up a Leaflet map and making an interactive choropleth map
+This step-by-step guide will quickly get you started on Leaflet basics, including setting up a Leaflet map and making a basic Choropleth map.
 
-Preparing your page
-Before writing any code for the map, you need to do the following preparation steps on your page:
+* Preparing your page
+   Before writing any code for the map, you need to do the following preparation steps on your page:
 
-Include Leaflet CSS file in the head section of your document:
+   1. Include Leaflet CSS file in the head section of your document:
 
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-   crossorigin=""/>
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+     integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+     crossorigin=""/>
 
-Include Leaflet JavaScript file after Leaflet’s CSS:
+   2. Include Leaflet JavaScript file after Leaflet’s CSS:
 
- <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-   crossorigin=""></script>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+     integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+     crossorigin=""></script>
    
-Put a div element with a certain id where you want your map to be:
+   3. Put a div element with a certain id where you want your map to be:
 
- <div id="mapid"></div>
+     <div id="mapid"></div>
  
-Make sure the map container has a defined height, for example by setting it in CSS:
+   4. Make sure the map container has a defined height, for example by setting it in CSS:
 
- #mapid { height: 600px; }
+     #mapid { height: 600px; }
 
-Setting up the map
+* Setting up the map
 
-Let’s create a map of the center of Bangalore with pretty Mapbox Streets tiles. First we’ll initialize the map and set its view to our chosen geographical coordinates and a zoom level:
+   1. Let’s create a map of the center of Bangalore with pretty Mapbox Streets tiles. First we’ll initialize the map and set its view to our chosen geographical coordinates and a zoom level:
 
- var map = L.map('map').setView([12.977527, 77.635864], 10)
+       var map = L.map('map').setView([12.977527, 77.635864], 10)
  
-Next we’ll add a tile layer to add to our map, in this case it’s a Mapbox Streets tile layer.
+   2. Next we’ll add a tile layer to add to our map, in this case it’s a Mapbox Streets tile layer.
 
- L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={your access token here}', {
-  maxZoom: 18,
-  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-  id: 'mapbox.light'
-  }).addTo(map);
+       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={your access token here}', {
+       maxZoom: 18,
+       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+       id: 'mapbox.light'
+       }).addTo(map);
   
- L.geoJson(statesData).addTo(map);
+       L.geoJson(statesData).addTo(map);
    
-Now we will make an interactive Choropleth Map.
+* Now we will make a basic Choropleth Map.
 
-Data Source
+   1. Data Source
 
-We’ll be creating a visualization of Temperature of diffrent areas of Bangalore. As the amount of data is not very big, the most convenient and simple way to store and then display it is GeoJSON.
+       We’ll be creating a visualization of Temperature of diffrent areas of Bangalore. As the amount of data is not very big, the most convenient and simple way to store and then display it is GeoJSON.
 
-Sample GeoJson File Of Bangalore --> https://bitbucket.org/bankamitesh/leaflet/src/0aaf5eba23218b68cac82e70884f8354cfd0efb7/web/assets/js/test.js?at=master
+       Sample GeoJson File Of Bangalore --> https://bitbucket.org/bankamitesh/leaflet/src/0aaf5eba23218b68cac82e70884f8354cfd0efb7/web/assets/js/test.js?at=master
 
-Each feature of our GeoJSON data (test.js) will look like this:
+       Each feature of our GeoJSON data (test.js) will look like this:
 
-{
-    "type": "Feature",
-    "properties": {
-        "name": "Alabama",
-        "density": 94.65
-    },
-    "geometry": ...
-    ...
-}
+        {
+         "type": "Feature",
+         "properties": {
+         "name": "Alabama",
+         "density": 94.65
+        },
+        "geometry": ...
+         ...
+        }
 
 Including the GeoJSON data a basic Choropleth Map of Bangalore will be created. 
 
