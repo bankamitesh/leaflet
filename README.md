@@ -99,7 +99,7 @@ Including the GeoJSON data a basic Choropleth Map of Bangalore will be created.
             }).addTo(mymap);
         </script>
     </body>
-</html>
+</html> 
  
 ### Who do I talk to? ###
 
