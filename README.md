@@ -104,5 +104,5 @@ Including the GeoJSON data a basic Choropleth Map of Bangalore will be created.
 ### Who do I talk to? ###
 
 * Mitesh Banka
-* banka.mitesh@gmail.com
-* +91 8482096370
+  banka.mitesh@gmail.com
+  +91 8482096370
